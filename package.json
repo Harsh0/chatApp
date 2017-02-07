@@ -4,15 +4,17 @@
   "description": "this app let you chat in multiroom login via your social authentication",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node server.js"
+    "start": "node server.js"
   },
   "author": "Harsh Singhal",
   "license": "ISC",
-  "engines":{
-    "node":"4.2.2"
+  "engines": {
+    "node": "4.2.2"
   },
-  "dependencies":{
-    "express":"^4.13.3",
-    "ejs":"2.3.4"
+  "dependencies": {
+    "ejs": "2.3.4",
+    "express": "^4.13.3",
+    "express-session": "1.12.1",
+    "mongoose": "4.3.1"
   }
 }

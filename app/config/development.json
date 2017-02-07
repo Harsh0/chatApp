@@ -1,0 +1,4 @@
+{
+    "host":"http://localhost:3000",
+    "dbURI":"mongodb://Harsh:123@ds119788.mlab.com:19788/personal_details"
+}
