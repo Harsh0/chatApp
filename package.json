@@ -1,0 +1,11 @@
+{
+  "name": "chatapp",
+  "version": "1.0.0",
+  "description": "this ap let you chat in multiroom login via your social authentication",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Harsh Singhal",
+  "license": "ISC"
+}
