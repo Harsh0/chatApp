@@ -7,9 +7,20 @@ Mongoose.connection.once('open',()=>{
 })
 //Log an error if connection fails
 Mongoose.connection.on('error',error=>{
-   console.log('MongoDB error : ',error); 
+   console.log('MongoDB error : ',error);
 });
 
+//define a schema that define a single user
+const chatUser = new Mongoose.Schema({
+  profileId:String,
+  fullName:String,
+  profilePic:String
+})
+
+//turn the schema into a usable model
+let userModel = Mongoose.model('chatUser',chatUser);
+
 module.exports = {
-    Mongoose
+    Mongoose,
+    userModel
 }

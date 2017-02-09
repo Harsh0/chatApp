@@ -1,5 +1,6 @@
 'use strict';
 const h = require('../helper');
+const passport = require('passport');
 
 module.exports = ()=>{
     let routes = {
@@ -10,12 +11,17 @@ module.exports = ()=>{
             '/rooms':(req,res,next)=>{
                 res.render('rooms');
             },
-            '/chatroom':(req,res,next)=>{
+            '/chat':(req,res,next)=>{
                 res.render('chatroom');
-            }
+            },
+            '/auth/facebook':passport.authenticate('facebook'),
+            '/auth/facebook/callback':passport.authenticate('facebook',{
+              successRedirect:'/rooms',
+              failureRedirect:'/'
+            })
         },
         'post':{
-            
+
         },
         'NA':(req,res,next)=>{
             res.status(404).sendFile(process.cwd()+'/views/404.htm');
