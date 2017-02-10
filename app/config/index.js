@@ -10,6 +10,12 @@ if(process.env.NODE_ENV==='production'){
           "clientSecret":process.env.fbclientSecret,
           "callbackURL":process.env.host+"/auth/facebook/callback",
           "profileFields":["id","displayName","photos"]
+        },
+        "twitter":{
+          "consumerKey":process.env.twitterConsumerKey,
+          "consumerSecret":process.env.twitterConsumerSecret,
+          "callbackURL":process.env.host+"/auth/twitter/callback",
+          "profileFields":["id","displayName","photos"]
         }
     }
 }else{
