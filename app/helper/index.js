@@ -89,6 +89,56 @@ let findRoomById= (allrooms,id)=>{
     return element.roomID === id;
   });
 }
+
+//add user to roomID
+let addUserToRoom = (allrooms,data,socket)=>{
+  //get the room object
+  let getRoom = findRoomById(allrooms,data.roomID);
+  if(getRoom!==undefined){
+    //get the active user's id
+    let userID = socket.request.session.passport.user;
+    //check to see if user already exist in chatroom
+    let checkUser = getRoom.users.findIndex((element,index,array)=>{
+      if(element.userID === userID){
+        return true;
+      }else{
+        return false;
+      }
+    });
+    //if the user is already present in the room, remove the first
+    if(checkUser>-1){
+      getRoom.users.splice(checkUser,1);
+    }
+    //Push the user into room's user array
+    getRoom.users.push({
+      socketID : socket.id,
+      userID,
+      user:data.user,
+      userPic:data.userPic
+    });
+    //join the room channel
+    socket.join(data.roomID);
+
+    //return the updated room object
+    return getRoom;
+  }
+  return {};
+}
+//function to remove user from room
+let removeUserFromRoom = (allrooms,socket)=>{
+  for(let room of allrooms){
+    //find the user
+    let findUser = room.users.findIndex((element,index,array)=>{
+      return element.socketID===socket.id;
+    })
+    if(findUser>-1){
+      socket.leave(room.roomID);
+      room.users.splice(findUser,1);
+      return room;
+    }
+  }
+}
+
 module.exports = {
     route,
     findOne,
@@ -97,5 +147,7 @@ module.exports = {
     isAuthenticated,
     findRoomByName,
     randomHex,
-    findRoomById
+    findRoomById,
+    addUserToRoom,
+    removeUserFromRoom
 }
