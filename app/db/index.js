@@ -1,5 +1,6 @@
 'use strict';
 const config = require('../config');
+const logger = require('../logger');
 const Mongoose = require('mongoose').connect(config.dbURI);
 //log for successfull mongo connection
 Mongoose.connection.once('open',()=>{
@@ -7,7 +8,7 @@ Mongoose.connection.once('open',()=>{
 })
 //Log an error if connection fails
 Mongoose.connection.on('error',error=>{
-   console.log('MongoDB error : ',error);
+   logger.log('error','Mongoose connection error : '+error);
 });
 
 //define a schema that define a single user

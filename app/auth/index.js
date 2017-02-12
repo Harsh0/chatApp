@@ -1,6 +1,7 @@
 'use strict';
 const passport = require('passport');
 const config = require('../config');
+const logger = require('../logger');
 
 const FacebookStrategy = require('passport-facebook').Strategy;
 const TwitterStrategy = require('passport-twitter').Strategy;
@@ -13,7 +14,7 @@ module.exports = ()=>{
   passport.deserializeUser((id,done)=>{
     h.findById(id)
       .then(user=>done(null,user))
-      .catch(error =>console.log('Error fetching user from id : '+error))
+      .catch(error =>logger.log('error','Error fetching user from id : '+error))
   })
   let authProcessor = (accessToken,refreshToken,profile,done)=>{
     //Find a user in the local db using profile.id
@@ -27,7 +28,7 @@ module.exports = ()=>{
           //create a user and return
           h.createNewUser(profile)
             .then(newChatUser => done(null,newChatUser))
-            .catch(error => console.log('Error while creating new User : '+error))
+            .catch(error => logger.log('error','Error while creating new User : '+error))
         }
       })
   }

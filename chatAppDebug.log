@@ -1,0 +1,4 @@
+{"level":"error","message":"Mongoose connection error : MongoError: connect ETIMEDOUT 52.3.82.39:19788","timestamp":"2017-02-12T07:47:27.181Z"}
+{"level":"error","message":"Mongoose connection error : MongoError: connect ETIMEDOUT 52.3.82.39:19788","timestamp":"2017-02-12T07:50:42.085Z"}
+{"level":"info","message":"::1 - - [12/Feb/2017:08:29:53 +0000] \"GET / HTTP/1.1\" 200 623 \"-\" \"Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36\"\n","timestamp":"2017-02-12T08:29:53.040Z"}
+{"level":"info","message":"::1 - - [12/Feb/2017:08:30:01 +0000] \"GET /auth/facebook HTTP/1.1\" 302 0 \"http://localhost/\" \"Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36\"\n","timestamp":"2017-02-12T08:30:01.908Z"}
