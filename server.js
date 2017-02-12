@@ -5,7 +5,8 @@ const ChatApp = require('./app');
 const passport = require('passport');
 
 app.set('port',process.env.port||3000);
-app.use(express.static('public'))
+app.use(express.static('public'));
+app.use(express.static('node_modules/babel-standalone'));
 app.set('view engine','ejs');
 
 app.use(ChatApp.session);
